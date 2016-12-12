@@ -32,4 +32,15 @@ app.controller('LibraryCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.currentImage = image;
     };
 
+    $scope.createBook = function () {
+        $scope.collection.push({
+            title: $scope.title,
+            author: $scope.author,
+            size: $scope.size,
+            date: $scope.publication,
+            isRead: false,
+            image: $scope.defaultImage
+        })
+    }
+
 }]);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="library">
 <head>
-    <link rel="stylesheet" type="text/css" href="libs/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <script type="text/javascript" src="libs/angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
@@ -11,6 +11,51 @@
 <div ng-controller="LibraryCtrl" class="container">
 
     <div class="row">
+        <h2>Add book to collection</h2>
+        <hr>
+        <form name="BookForm" class="form-horizontal" ng-submit="createBook()" novalidate>
+            <!-- TITLE -->
+            <div class="form-group has-error has-feedback">
+                <label class="col-sm-1 control-label">Title:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" ng-model="title" required
+                           name="title" placeholder="Type book title...">
+                </div>
+                <label class="control-label" ng-show="BookForm.title.$error.required">Title mustn't be empty!</label>
+            </div>
+            <!-- AUTHOR -->
+            <div class="form-group has-error has-feedback">
+                <label class="col-sm-1 control-label">Author:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" ng-model="author"
+                           name="author" placeholder="Type book author...">
+                </div>
+            </div>
+            <!-- PUBLICATION -->
+            <div class="form-group has-error has-feedback">
+                <label class="col-sm-1 control-label">Published:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" ng-model="publication" min="0" max="10"
+                           name="publication" placeholder="Type a year of publication...">
+                </div>
+                <label class="control-label" ng-show="BookForm.publication.$error.min">Publication date is too min!</label>
+                <label class="control-label" ng-show="BookForm.publication.$error.max">Publication date is too max!</label>
+            </div>
+            <!-- SIZE -->
+            <div class="form-group has-error has-feedback">
+                <label class="col-sm-1 control-label">Size:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" ng-model="size"
+                           name="size" placeholder="Type volume of book...">
+                </div>
+            </div>
+            <div class="input-group col-sm-offset-1">
+                <button type="submit" class="btn btn-default">Put book into collection</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
         <span class="visible-lg"></span>
     </div>
 
@@ -18,6 +63,7 @@
 
         <div class="col-sm-8">
             <h3 class="library-collection">Library Collection</h3>
+            <hr>
             <table class="table table-hover">
                 <thead>
                 <tr>
