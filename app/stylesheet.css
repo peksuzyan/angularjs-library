@@ -1,0 +1,21 @@
+.library-collection {
+    text-align: center;
+}
+
+tr, th, fieldset {
+    text-align: center;
+}
+
+.library-image-tiny {
+    width: 20px;
+    height: 30px;
+}
+
+.library-image-full {
+    width: 200px;
+    height: 300px;
+}
+
+.visible-lg {
+    height: 30px;
+}

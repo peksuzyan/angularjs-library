@@ -1,0 +1,66 @@
+[
+  {
+    "title": "A hero of our Time",
+    "author": "Mikhail Lermontov",
+    "size": 253,
+    "date": 1840,
+    "isRead": false,
+    "image": "pictures/a_hero_of_our_time.jpg"
+  },
+  {
+    "title": "Dead Souls",
+    "author": "Nikolay Gogol",
+    "size": 302,
+    "date": 1842,
+    "isRead": false,
+    "image": "pictures/dead_souls.jpg"
+  },
+  {
+    "title": "Oblomov",
+    "author": "Ivan Goncharov",
+    "size": 527,
+    "date": 1859,
+    "isRead": false,
+    "image": "pictures/oblomov.jpg"
+  },
+  {
+    "title": "Fathers and Sons",
+    "author": "Ivan Turgenev",
+    "size": 201,
+    "date": 1862,
+    "isRead": true,
+    "image": "pictures/fathers_and_sons.jpg"
+  },
+  {
+    "title": "War and Peace",
+    "author": "Lev Tolstoy",
+    "size": 1487,
+    "date": 1869,
+    "isRead": false,
+    "image": "pictures/war_and_peace.jpg"
+  },
+  {
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "size": 324,
+    "date": 1867,
+    "isRead": false,
+    "image": "pictures/crime_and_punishment.jpg"
+  },
+  {
+    "title": "Anna Karenina",
+    "author": "Lev Tolstoy",
+    "size": 501,
+    "date": 1877,
+    "isRead": false,
+    "image": "pictures/anna_karenina.jpg"
+  },
+  {
+    "title": "The Brothers Karamazov",
+    "author": "Fyodor Dostoesvky",
+    "size": 1087,
+    "date": 1880,
+    "isRead": false,
+    "image": "pictures/the_brothers_karamazov.jpg"
+  }
+]
