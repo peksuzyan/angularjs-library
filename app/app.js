@@ -1,8 +1,49 @@
 var app = angular.module('library', []);
 
-app.controller('LibraryCtrl', ['$scope', '$http', function ($scope, $http) {
+app.service('server', ['$http', function ($http) {
 
-    $scope.defaultImage = "pictures/unknown.jpg";
+    var collection = [];
+
+    $http.get('data/collection.json').success(function (data) {
+        collection = data;
+    });
+
+    this.getCollection = function () {
+        return collection;
+    };
+
+    this.addIntoCollection = function (book) {
+        collection.push(book);
+    };
+
+    var defaultImage = "pictures/unknown.jpg";
+
+    this.getDefaultImage = function () {
+        return defaultImage;
+    }
+
+}]);
+
+app.controller('ManageBookCtrl', ['$scope', 'server', function ($scope, server) {
+
+    $scope.createBook = function () {
+        server.addIntoCollection({
+            title: $scope.title,
+            author: $scope.author,
+            size: $scope.size,
+            date: $scope.publication,
+            isRead: false,
+            image: server.getDefaultImage()
+        })
+    }
+
+}]);
+
+app.controller('ShowBookCtrl', ['$scope', 'server', function ($scope, server) {
+
+    $scope.showBooks = function () {
+        return server.getCollection();
+    };
 
     $scope.sortProperty = null;
     $scope.sortReverse = false;
@@ -14,33 +55,16 @@ app.controller('LibraryCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.sortProperty = sortProperty;
     };
 
-    $scope.collection = [];
-
-    $http.get('library-books.json').success(function (data) {
-        $scope.collection = data;
-    });
-
     $scope.getBySize = function (size) {
         if (size < 400) return "info";
         return (size > 400 && size <= 1000)
             ? "warning" : "danger";
     };
 
-    $scope.currentImage = $scope.defaultImage;
+    $scope.currentImage = server.getDefaultImage();
 
     $scope.showImage = function (image) {
         $scope.currentImage = image;
     };
-
-    $scope.createBook = function () {
-        $scope.collection.push({
-            title: $scope.title,
-            author: $scope.author,
-            size: $scope.size,
-            date: $scope.publication,
-            isRead: false,
-            image: $scope.defaultImage
-        })
-    }
 
 }]);

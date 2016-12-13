@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<div ng-controller="LibraryCtrl" class="container">
+<div class="container">
 
-    <div class="row">
+    <div ng-controller="ManageBookCtrl" class="row">
         <h2>Add book to collection</h2>
         <hr>
         <form name="BookForm" class="form-horizontal" ng-submit="createBook()" novalidate>
@@ -21,7 +21,7 @@
                     <input type="text" class="form-control" ng-model="title" required
                            name="title" placeholder="Type book title...">
                 </div>
-                <label class="control-label" ng-show="BookForm.title.$error.required">Title mustn't be empty!</label>
+                <label class="control-label" ng-show="BookForm.title.$error.required">Title mustn't be an empty!</label>
             </div>
             <!-- AUTHOR -->
             <div class="form-group has-error has-feedback">
@@ -35,9 +35,11 @@
             <div class="form-group has-error has-feedback">
                 <label class="col-sm-1 control-label">Published:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" ng-model="publication" min="0" max="10"
+                    <input type="number" class="form-control" ng-model="publication"
+                           required min="1800" max="2016"
                            name="publication" placeholder="Type a year of publication...">
                 </div>
+                <label class="control-label" ng-show="BookForm.publication.$error.required">Publication date mustn't be an empty!</label>
                 <label class="control-label" ng-show="BookForm.publication.$error.min">Publication date is too min!</label>
                 <label class="control-label" ng-show="BookForm.publication.$error.max">Publication date is too max!</label>
             </div>
@@ -45,7 +47,8 @@
             <div class="form-group has-error has-feedback">
                 <label class="col-sm-1 control-label">Size:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" ng-model="size"
+                    <input type="number" class="form-control"
+                           ng-model="size" min="1" required
                            name="size" placeholder="Type volume of book...">
                 </div>
             </div>
@@ -59,7 +62,7 @@
         <span class="visible-lg"></span>
     </div>
 
-    <div class="row">
+    <div ng-controller="ShowBookCtrl" class="row">
 
         <div class="col-sm-8">
             <h3 class="library-collection">Library Collection</h3>
@@ -89,7 +92,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="book in collection | orderBy: sortProperty: sortReverse"
+                <tr ng-repeat="book in showBooks() | orderBy: sortProperty: sortReverse"
                     ng-click="showImage(book.image)" ng-class="getBySize(book.size)">
                     <td>{{$index + 1}}</td>
                     <td>"{{book.title}}"</td>
@@ -107,7 +110,7 @@
             </h4>
 
             <fieldset>
-                <em ng-repeat="book in collection">
+                <em ng-repeat="book in showBooks()">
                     <span ng-if="book.isRead">"{{book.title}}" - {{book.author}} ({{book.date}})<br></span>
                 </em>
             </fieldset>
