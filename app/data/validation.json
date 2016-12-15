@@ -1,0 +1,32 @@
+[
+  {
+    "name": "dirty",
+    "message": "Field isn't filled yet.",
+    "error": false,
+    "class": "has-default"
+  },
+  {
+    "name": "required",
+    "message": "Field mustn't be an empty!",
+    "error": true,
+    "class": "has-error"
+  },
+  {
+    "name": "max",
+    "message": "Typed value is too max!",
+    "error": true,
+    "class": "has-error"
+  },
+  {
+    "name": "min",
+    "message":  "Typed value is too min!",
+    "error": true,
+    "class": "has-error"
+  },
+  {
+    "name": "success",
+    "message": "Right!",
+    "error": false,
+    "class": "has-success"
+  }
+]

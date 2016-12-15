@@ -1,59 +1,67 @@
 <!DOCTYPE html>
-<html ng-app="library">
+<html ng-app="lib">
 <head>
     <link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <script type="text/javascript" src="libs/angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="modules/config/config.js"></script>
+    <script type="text/javascript" src="modules/model/backend.js"></script>
+    <script type="text/javascript" src="modules/service/library.js"></script>
+    <script type="text/javascript" src="modules/service/validator.js"></script>
+    <script type="text/javascript" src="modules/controller/book.js"></script>
+    <script type="text/javascript" src="modules/controller/store.js"></script>
 </head>
 <body>
 
 <div class="container">
 
-    <div ng-controller="ManageBookCtrl" class="row">
-        <h2>Add book to collection</h2>
-        <hr>
+    <div ng-controller="bookCtrl" class="row">
+        <h2>Add book to collection</h2><hr>
         <form name="BookForm" class="form-horizontal" ng-submit="createBook()" novalidate>
-            <!-- TITLE -->
-            <div class="form-group has-error has-feedback">
+            <div class="form-group has-feedback" ng-class="getResult(BookForm.title).class">
                 <label class="col-sm-1 control-label">Title:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" ng-model="title" required
+                    <input type="text" class="form-control"
+                           ng-model="title" required
                            name="title" placeholder="Type book title...">
                 </div>
-                <label class="control-label" ng-show="BookForm.title.$error.required">Title mustn't be an empty!</label>
+                <label class="control-label" ng-show="getResult(BookForm.title).error">
+                    {{getResult(BookForm.title).message}}</label>
             </div>
-            <!-- AUTHOR -->
-            <div class="form-group has-error has-feedback">
+            <div class="form-group has-feedback" ng-class="getResult(BookForm.author).class">
                 <label class="col-sm-1 control-label">Author:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" ng-model="author"
+                    <input type="text" class="form-control"
+                           ng-model="author" required
                            name="author" placeholder="Type book author...">
                 </div>
+                <label class="control-label" ng-show="getResult(BookForm.author).error">
+                    {{getResult(BookForm.author).message}}</label>
             </div>
-            <!-- PUBLICATION -->
-            <div class="form-group has-error has-feedback">
+            <div class="form-group has-feedback" ng-class="getResult(BookForm.publication).class">
                 <label class="col-sm-1 control-label">Published:</label>
                 <div class="col-sm-4">
-                    <input type="number" class="form-control" ng-model="publication"
-                           required min="1800" max="2016"
+                    <input type="number" class="form-control"
+                           ng-model="publication" required min="1800" max="2016"
                            name="publication" placeholder="Type a year of publication...">
                 </div>
-                <label class="control-label" ng-show="BookForm.publication.$error.required">Publication date mustn't be an empty!</label>
-                <label class="control-label" ng-show="BookForm.publication.$error.min">Publication date is too min!</label>
-                <label class="control-label" ng-show="BookForm.publication.$error.max">Publication date is too max!</label>
+                <label class="control-label" ng-show="getResult(BookForm.publication).error">
+                    {{getResult(BookForm.publication).message}}</label>
             </div>
-            <!-- SIZE -->
-            <div class="form-group has-error has-feedback">
+            <div class="form-group has-feedback" ng-class="getResult(BookForm.size).class">
                 <label class="col-sm-1 control-label">Size:</label>
                 <div class="col-sm-4">
                     <input type="number" class="form-control"
-                           ng-model="size" min="1" required
+                           ng-model="size" required min="1"
                            name="size" placeholder="Type volume of book...">
                 </div>
+                <label class="control-label" ng-show="getResult(BookForm.size).error">
+                    {{getResult(BookForm.size).message}}</label>
             </div>
             <div class="input-group col-sm-offset-1">
-                <button type="submit" class="btn btn-default">Put book into collection</button>
+                <button type="submit" class="btn btn-default" ng-disabled="!isValidForm(BookForm)">
+                    Put book into collection</button>
             </div>
         </form>
     </div>
@@ -62,7 +70,7 @@
         <span class="visible-lg"></span>
     </div>
 
-    <div ng-controller="ShowBookCtrl" class="row">
+    <div ng-controller="storeCtrl" class="row">
 
         <div class="col-sm-8">
             <h3 class="library-collection">Library Collection</h3>
@@ -75,7 +83,7 @@
                         <span ng-click="orderBy('title')">Title</span>
                     </th>
                     <th>
-                        <span ng-click="orderBy('title')">Icon</span>
+                        <span>Icon</span>
                     </th>
                     <th>
                         <span ng-click="orderBy('author')">Author</span>
@@ -87,7 +95,7 @@
                         <span ng-click="orderBy('size')">Size</span>
                     </th>
                     <th>
-                        <span ng-click="orderBy('isRead')"></span>
+                        <span></span>
                     </th>
                 </tr>
                 </thead>
@@ -105,9 +113,7 @@
                 </tbody>
             </table>
 
-            <h4 class="library-collection">Have been already read
-                <small>by yourself</small>
-            </h4>
+            <h4 class="library-collection">Have been already read <small>by yourself</small></h4>
 
             <fieldset>
                 <em ng-repeat="book in showBooks()">
