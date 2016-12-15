@@ -1,4 +1,4 @@
-app.factory('validator', [
+serviceLayer.factory('validator', [
     'backend', function (backend) {
 
     var validator = {};

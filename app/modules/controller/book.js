@@ -1,4 +1,4 @@
-app.controller('bookCtrl', [
+ctrlLayer.controller('bookCtrl', [
     '$scope', 'library', 'validator', 'config', function ($scope, library, validator, config) {
 
     $scope.createBook = function () {

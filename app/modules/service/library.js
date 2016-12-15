@@ -1,4 +1,4 @@
-app.factory('library', [
+serviceLayer.factory('library', [
     'backend', function (backend) {
 
     var library = {};

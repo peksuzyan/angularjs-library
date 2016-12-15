@@ -1,4 +1,4 @@
-app.service('backend', [
+modelLayer.service('backend', [
     '$http', 'config', function ($http, config) {
 
     this.getCollection = {

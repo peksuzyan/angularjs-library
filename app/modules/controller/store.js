@@ -1,4 +1,4 @@
-app.controller('storeCtrl', [
+ctrlLayer.controller('storeCtrl', [
     '$scope', 'library', 'config', function ($scope, library, config) {
 
     $scope.showBooks = function () {
