@@ -1,0 +1,56 @@
+<div ng-controller="storeCtrl" class="row">
+    <div class="col-sm-8">
+        <h3 class="library-collection">Library Collection</h3>
+        <hr>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    <span ng-click="orderBy('title')">Title</span>
+                </th>
+                <th>
+                    <span>Icon</span>
+                </th>
+                <th>
+                    <span ng-click="orderBy('author')">Author</span>
+                </th>
+                <th>
+                    <span ng-click="orderBy('date')">Published</span>
+                </th>
+                <th>
+                    <span ng-click="orderBy('size')">Size</span>
+                </th>
+                <th>
+                    <span></span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="book in showBooks() | orderBy: sortProperty: sortReverse"
+                ng-click="showImage(book.image)" ng-class="getBySize(book.size)">
+                <td>{{$index + 1}}</td>
+                <td>"{{book.title}}"</td>
+                <td><img ng-src="{{book.image}}" alt="{{book.title}}" class="library-image-tiny"/></td>
+                <td>{{book.author}}</td>
+                <td><code>{{book.date}}</code></td>
+                <td>{{book.size}} p.</td>
+                <td><input type="checkbox" ng-model="book.isRead"/></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h4 class="library-collection">Have been already read <small>by yourself</small></h4>
+
+        <fieldset>
+            <em ng-repeat="book in showBooks()">
+                <span ng-if="book.isRead">"{{book.title}}" - {{book.author}} ({{book.date}})<br></span>
+            </em>
+        </fieldset>
+    </div>
+
+    <div class="col-sm-4">
+        <img ng-src="{{currentImage}}" class="img-thumbnail img-responsive">
+    </div>
+
+</div>

@@ -1,9 +1,9 @@
 modelLayer.service('backend', [
-    '$http', 'config', function ($http, config) {
+    '$http', 'PATH', function ($http, PATH) {
 
     this.getCollection = {
         async: function () {
-            return $http.get(config.COLLECTION).then(function (response) {
+            return $http.get(PATH.COLLECTION).then(function (response) {
                 return response.data;
             });
         }
@@ -11,7 +11,7 @@ modelLayer.service('backend', [
 
     this.getValidation = {
         async: function () {
-            return $http.get(config.VALIDATION).then(function (response) {
+            return $http.get(PATH.VALIDATION).then(function (response) {
                 return response.data;
             });
         }

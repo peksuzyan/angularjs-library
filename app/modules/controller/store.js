@@ -1,8 +1,8 @@
 ctrlLayer.controller('storeCtrl', [
-    '$scope', 'library', 'config', function ($scope, library, config) {
+    '$scope', 'collection', 'DEFAULT', function ($scope, collection, DEFAULT) {
 
     $scope.showBooks = function () {
-        return library.get();
+        return collection.get();
     };
 
     $scope.sortProperty = null;
@@ -21,7 +21,7 @@ ctrlLayer.controller('storeCtrl', [
             ? "warning" : "danger";
     };
 
-    $scope.currentImage = config.DEFAULT_IMAGE;
+    $scope.currentImage = DEFAULT.IMAGE;
 
     $scope.showImage = function (image) {
         $scope.currentImage = image;

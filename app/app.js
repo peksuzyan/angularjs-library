@@ -1,4 +1,4 @@
-var configLayer = angular.module('configuration', []);
+var configLayer = angular.module('configuration', ['ngRoute']);
 
 var modelLayer = angular.module('model', ['configuration']);
 
