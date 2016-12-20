@@ -1,66 +1,96 @@
 [
   {
+    "id": 1,
     "title": "A hero of our Time",
     "author": "Mikhail Lermontov",
     "size": 253,
     "date": 1840,
     "isRead": false,
-    "image": "pictures/a_hero_of_our_time.jpg"
+    "image": "pictures/a_hero_of_our_time.jpg",
+    "description": "Previously to Lermontov’s groundbreaking novel, Russian literature had been populated by short prose works and dominated by the poetry of Evgeni Pushkin. But once Lermontov introduced his character Pechorin, he would go on to set a benchmark for the complexity of characters in Russian fiction. A flawed, non-Romantic figure who must live up to ideals he can’t uphold, Lermontov proclaimed the end of the Romantic era and ushered the great era of realist fiction.",
+    "reviews": [
+      {
+        "nickname": "Semen Altov",
+        "date": "13:16 12.11.2016",
+        "stars": 5,
+        "content": "It's beautiful novel! I recommend you to read it!"
+      },
+      {
+        "nickname": "Genghis Khan",
+        "date": "23:54 03.04.2016",
+        "stars": 3,
+        "content": "My life is more interesting if you know what does it mean..."
+      }
+    ]
   },
   {
+    "id": 2,
     "title": "Dead Souls",
     "author": "Nikolay Gogol",
     "size": 302,
     "date": 1842,
     "isRead": false,
-    "image": "pictures/dead_souls.jpg"
+    "image": "pictures/dead_souls.jpg",
+    "description": "Gogol’s novel about a man who tries to trick landowners into buying their dead serfs (“dead souls”), who are technically still alive until the next Russian census, is a satirical picaresque similar in style to Cervantes but which stands alone for its odd and grotesque caricatures of Russian provincial life. Although Gogol was a self-professed conservative, the younger generations used it to argue against the ills of 19th century Russian society."
   },
   {
+    "id": 3,
     "title": "Oblomov",
     "author": "Ivan Goncharov",
     "size": 527,
     "date": 1859,
     "isRead": false,
-    "image": "pictures/oblomov.jpg"
+    "image": "pictures/oblomov.jpg",
+    "description": "Goncharov tied together the social and personal issues of the day with this novel about a member of the gentry grown who is caught between the “idyllic” life of pre-emancipation serfdom and the “new”, more liberated Russia. Combining the romance of Pushkin and the rising school of realism, Oblomov is one of the best records of Russia’s great societal transition."
   },
   {
+    "id": 4,
     "title": "Fathers and Sons",
     "author": "Ivan Turgenev",
     "size": 201,
     "date": 1862,
     "isRead": true,
-    "image": "pictures/fathers_and_sons.jpg"
+    "image": "pictures/fathers_and_sons.jpg",
+    "description": "Fathers and Sons did what many other Russian novels did: pit the younger generation against the old. When Bazarov, a strict nihilist, challenges the well-established mores of Provincial life, he lures the naive towards his radical ideas. But when his beliefs get challenged by the unexpected appearance of passionate love and spirituality, he suffers a crisis that will force him to rethink his entire worldview."
   },
   {
+    "id": 5,
     "title": "War and Peace",
     "author": "Lev Tolstoy",
     "size": 1487,
     "date": 1869,
     "isRead": false,
-    "image": "pictures/war_and_peace.jpg"
+    "image": "pictures/war_and_peace.jpg",
+    "description": "The Great White Whale of Russian literature, War and Peace is a 1,300 page work that includes hundreds of subplots and characters all intertwining during the failed Napoleonic invasions of 1812. It has been criticized for its narrative looseness, but the transition from innocence to experience of its 5 main characters beautifully details the personal and historical happenings of early 19th century Russia."
   },
   {
+    "id": 6,
     "title": "Crime and Punishment",
     "author": "Fyodor Dostoevsky",
     "size": 324,
     "date": 1867,
     "isRead": false,
-    "image": "pictures/crime_and_punishment.jpg"
+    "image": "pictures/crime_and_punishment.jpg",
+    "description": "The first of Dostoevsky’s major novels, this presumably simple tale about a murder and its aftermath has remained one of the great preservers of 19th century urban life in Russia, describing everything from poverty, religion, family and of course, evil. When Raskolnikov, a former student enamored by Napoleonic ideals of superiority, decides to commit a murder against a old pawnbroker, it provokes one of the greatest personal transformations ever portrayed in literature."
   },
   {
+    "id": 7,
     "title": "Anna Karenina",
     "author": "Lev Tolstoy",
     "size": 501,
     "date": 1877,
     "isRead": false,
-    "image": "pictures/anna_karenina.jpg"
+    "image": "pictures/anna_karenina.jpg",
+    "description": "Before Oprah Winfrey praised Tolstoy’s great work about adultery and family life in Russia’s aristocratic circles, Karenina was already one of the most important novels in the European canon. Written on a much smaller and personal scope than War and Peace, Karenina has been touted as Russia’s great realist novel, and along with Flaubert’s Madame Bovary and George Eliot’s Middlemarch, it has become an exemplary text of the genre."
   },
   {
+    "id": 8,
     "title": "The Brothers Karamazov",
     "author": "Fyodor Dostoesvky",
     "size": 1087,
     "date": 1880,
     "isRead": false,
-    "image": "pictures/the_brothers_karamazov.jpg"
+    "image": "pictures/the_brothers_karamazov.jpg",
+    "description": "It is difficult to exclude many of Dostoevsky’s works, but Karamazov has not only retained its status as one of the seminal works in Russian Literature, but it has also gone on to become one of the most celebrated novels of all time. Part murder-mystery, part exploration of faith, the novel describes the murder of a father at the hand of one of four brothers, and like many other works by this great, troubled visionary, questions in great detail the existence and purpose of God."
   }
 ]

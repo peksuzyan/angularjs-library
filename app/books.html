@@ -1,4 +1,4 @@
-<div ng-controller="storeCtrl" class="row">
+<div class="row">
     <div class="col-sm-8">
         <h3 class="library-collection">Library Collection</h3>
         <hr>
@@ -28,17 +28,21 @@
             </thead>
             <tbody>
             <tr ng-repeat="book in showBooks() | orderBy: sortProperty: sortReverse"
-                ng-click="showImage(book.image)" ng-class="getBySize(book.size)">
+                ng-mouseover="showImage(book.image)" ng-class="getBySize(book.size)">
                 <td>{{$index + 1}}</td>
                 <td>"{{book.title}}"</td>
-                <td><img ng-src="{{book.image}}" alt="{{book.title}}" class="library-image-tiny"/></td>
+                <td ng-click="go('/show/' + book.id)">
+                    <img ng-src="{{book.image}}" alt="{{book.title}}"
+                         class="library-image-tiny"/></td>
                 <td>{{book.author}}</td>
                 <td><code>{{book.date}}</code></td>
                 <td>{{book.size}} p.</td>
-                <td><input type="checkbox" ng-model="book.isRead"/></td>
+                <td ng-click=""><input type="checkbox" ng-model="book.isRead"/></td>
             </tr>
             </tbody>
         </table>
+
+        <a ng-href="#/add" class="btn btn-success btn-block" role="button">Add new book</a>
 
         <h4 class="library-collection">Have been already read <small>by yourself</small></h4>
 

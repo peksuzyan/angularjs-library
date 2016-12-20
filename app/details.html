@@ -1,0 +1,29 @@
+<div class="row">
+
+    <div class="col-sm-offset-5 col-sm-2">
+        <img ng-src="{{book.image}}" class="img-rounded img-responsive">
+    </div>
+
+    <div class="col-sm-offset-3 col-sm-6">
+
+        <h3 class="library-collection">{{book.title}}</h3>
+        <h5 class="library-collection">{{book.author}}</h5>
+
+        <hr>
+
+        <div class="list-group">
+            <a class="list-group-item">Count of pages: <mark>{{book.size}}</mark></a>
+            <a class="list-group-item">Publication date: <mark>{{book.date}}</mark></a>
+            <a class="list-group-item">{{book.description}}</a>
+            <a class="list-group-item">
+                <blockquote class="blockquote-reverse" ng-repeat="review in book.reviews">
+                    <p>"{{review.content}}"</p>
+                    <footer>{{review.nickname}}, {{review.date}}</footer>
+                </blockquote>
+            </a>
+        </div>
+
+        <a ng-href="#/" class="btn btn-success btn-block" role="button">Back to the Library</a>
+
+    </div>
+</div>

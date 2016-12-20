@@ -1,6 +1,11 @@
-<div ng-controller="bookCtrl" class="row">
-    <h2>Add book to collection</h2><hr>
+<div class="row">
+
+    <h2>Add book to collection</h2>
+
+    <hr>
+
     <form name="book" class="form-horizontal" novalidate>
+
         <div class="form-group has-feedback" ng-class="getResult(book.title).class">
             <label class="col-sm-1 control-label">Title:</label>
             <div class="col-sm-4">
@@ -11,6 +16,7 @@
             <label class="control-label" ng-show="getResult(book.title).error">
                 {{getResult(book.title).message}}</label>
         </div>
+
         <div class="form-group has-feedback" ng-class="getResult(book.author).class">
             <label class="col-sm-1 control-label">Author:</label>
             <div class="col-sm-4">
@@ -21,6 +27,7 @@
             <label class="control-label" ng-show="getResult(book.author).error">
                 {{getResult(book.author).message}}</label>
         </div>
+
         <div class="form-group has-feedback" ng-class="getResult(book.publication).class">
             <label class="col-sm-1 control-label">Published:</label>
             <div class="col-sm-4">
@@ -31,6 +38,7 @@
             <label class="control-label" ng-show="getResult(book.publication).error">
                 {{getResult(book.publication).message}}</label>
         </div>
+
         <div class="form-group has-feedback" ng-class="getResult(book.size).class">
             <label class="col-sm-1 control-label">Size:</label>
             <div class="col-sm-4">
@@ -41,10 +49,12 @@
             <label class="control-label" ng-show="getResult(book.size).error">
                 {{getResult(book.size).message}}</label>
         </div>
+
         <div class="input-group col-sm-offset-1">
             <button type="submit" class="btn btn-default"
                     ng-disabled="!isValidForm(book)" ng-click="createBook(book)" >
                 Put book into collection</button>
         </div>
+
     </form>
 </div>
