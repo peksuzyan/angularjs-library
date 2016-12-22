@@ -23,19 +23,8 @@ ctrlLayer.controller('detailCtrl', [
         };
 
         $scope.getAverageScore = function () {
-            var totalScore = 0;
-            for (var i = 0; i < $scope.book.reviews.length; i++) {
-                totalScore += Number($scope.book.reviews[i].score);
-            }
-            return $scope.book.reviews.length > 0
-                ? (totalScore) : 0;
+            return collection.getAverageScore($scope.book);
         };
-
-        // $scope.averageScope = $scope.getAverageScore();
-
-        // $scope.getStars = function (stars) {
-        //     return new Array(stars);
-        // };
 
         $scope.formatDate = function (date) {
             return new Date(date);

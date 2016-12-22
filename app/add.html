@@ -1,60 +1,102 @@
 <div class="row">
 
-    <h2>Add book to collection</h2>
+    <div class="col-sm-offset-1 col-sm-10">
 
-    <hr>
+        <h3 class="library-collection">Book Registration</h3>
 
-    <form name="book" class="form-horizontal" novalidate>
+        <hr>
 
-        <div class="form-group has-feedback" ng-class="getResult(book.title).class">
-            <label class="col-sm-1 control-label">Title:</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control"
-                       ng-model="title" required
-                       name="title" placeholder="Type book title...">
+    </div>
+
+    <div class="col-sm-offset-1 col-sm-4">
+
+        <img ng-src="{{loadedImage}}" class="img-rounded img-responsive">
+
+    </div>
+
+    <div class="col-sm-7">
+
+        <vertical-gap></vertical-gap>
+
+        <form name="book" class="form-horizontal" novalidate>
+
+            <div class="form-group has-feedback" ng-class="getResult(book.title).class">
+                <label class="col-sm-2 control-label">Title:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control"
+                           ng-model="title" required
+                           name="title" placeholder="Type the book title...">
+                </div>
+                <label class="control-label" ng-show="getResult(book.title).error">
+                    {{getResult(book.title).message}}</label>
             </div>
-            <label class="control-label" ng-show="getResult(book.title).error">
-                {{getResult(book.title).message}}</label>
-        </div>
 
-        <div class="form-group has-feedback" ng-class="getResult(book.author).class">
-            <label class="col-sm-1 control-label">Author:</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control"
-                       ng-model="author" required
-                       name="author" placeholder="Type book author...">
+            <div class="form-group has-feedback" ng-class="getResult(book.author).class">
+                <label class="col-sm-2 control-label">Author:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control"
+                           ng-model="author" required
+                           name="author" placeholder="Type the book author...">
+                </div>
+                <label class="control-label" ng-show="getResult(book.author).error">
+                    {{getResult(book.author).message}}</label>
             </div>
-            <label class="control-label" ng-show="getResult(book.author).error">
-                {{getResult(book.author).message}}</label>
-        </div>
 
-        <div class="form-group has-feedback" ng-class="getResult(book.publication).class">
-            <label class="col-sm-1 control-label">Published:</label>
-            <div class="col-sm-4">
-                <input type="number" class="form-control"
-                       ng-model="publication" required min="1800" max="2016"
-                       name="publication" placeholder="Type a year of publication...">
+            <div class="form-group has-feedback" ng-class="getResult(book.publication).class">
+                <label class="col-sm-2 control-label">Published:</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control"
+                           ng-model="publication" required min="1800" max="2016"
+                           name="publication" placeholder="Type a year of publication...">
+                </div>
+                <label class="control-label" ng-show="getResult(book.publication).error">
+                    {{getResult(book.publication).message}}</label>
             </div>
-            <label class="control-label" ng-show="getResult(book.publication).error">
-                {{getResult(book.publication).message}}</label>
-        </div>
 
-        <div class="form-group has-feedback" ng-class="getResult(book.size).class">
-            <label class="col-sm-1 control-label">Size:</label>
-            <div class="col-sm-4">
-                <input type="number" class="form-control"
-                       ng-model="size" required min="1"
-                       name="size" placeholder="Type volume of book...">
+            <div class="form-group has-feedback" ng-class="getResult(book.size).class">
+                <label class="col-sm-2 control-label">Size:</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control"
+                           ng-model="size" required min="1"
+                           name="size" placeholder="Type volume of the book...">
+                </div>
+                <label class="control-label" ng-show="getResult(book.size).error">
+                    {{getResult(book.size).message}}</label>
             </div>
-            <label class="control-label" ng-show="getResult(book.size).error">
-                {{getResult(book.size).message}}</label>
-        </div>
 
-        <div class="input-group col-sm-offset-1">
-            <button type="submit" class="btn btn-default"
-                    ng-disabled="!isValidForm(book)" ng-click="createBook(book)" >
-                Put book into collection</button>
-        </div>
+            <div class="form-group has-feedback" ng-class="getResult(book.description).class">
+                <label class="col-sm-2 control-label">Description:</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" ng-model="description" required
+                              name="description" placeholder="Type description of the book..."></textarea>
+                </div>
+                <label class="control-label" ng-show="getResult(book.description).error">
+                    {{getResult(book.description).message}}</label>
+            </div>
 
-    </form>
+            <div class="form-group has-feedback" ng-class="getResult(book.image).class">
+                <label class="col-sm-2 control-label">Image:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" ng-model="image" ng-keyup="hasImage()"
+                           name="image" placeholder="Type url address of the book image...">
+                </div>
+                <label class="control-label" ng-show="getResult(book.image).error">
+                    {{getResult(book.image).message}}</label>
+            </div>
+
+            <br>
+
+            <div class="col-sm-4">
+                <a ng-href="#/" class="btn btn-success btn-block" role="button">Back to the Library</a>
+            </div>
+
+            <div class="input-group col-sm-4">
+                <button type="submit" class="btn btn-primary btn-block"
+                        ng-disabled="!isValidForm(book)" ng-click="createBook(book)">Put book into collection</button>
+            </div>
+
+        </form>
+
+    </div>
+
 </div>

@@ -3,15 +3,28 @@ ctrlLayer.controller('bookCtrl', [
 
     $scope.createBook = function () {
         collection.add({
+            id: collection.getMaxBookId() + 1,
             title: $scope.title,
             author: $scope.author,
             size: $scope.size,
             date: $scope.publication,
             isRead: false,
-            image: DEFAULT.IMAGE
+            image: $scope.loadedImage,
+            description: $scope.description,
+            reviews: []
         });
 
         $scope.clearForm();
+    };
+
+    $scope.loadedImage = DEFAULT.IMAGE;
+
+    $scope.hasImage = function () {
+        collection.fileExists($scope.image).success(function (response) {
+            $scope.loadedImage = $scope.image;
+        }).error(function (error) {
+            $scope.loadedImage = DEFAULT.IMAGE;
+        });
     };
 
     $scope.clearForm = function () {
@@ -19,6 +32,10 @@ ctrlLayer.controller('bookCtrl', [
         $scope.author = null;
         $scope.size = null;
         $scope.publication = null;
+        $scope.description = null;
+        $scope.image = null;
+
+        $scope.loadedImage = DEFAULT.IMAGE;
 
         $scope.book.$setPristine();
         $scope.book.$setUntouched();
@@ -28,7 +45,8 @@ ctrlLayer.controller('bookCtrl', [
         return form.size.$valid
             && form.title.$valid
             && form.author.$valid
-            && form.publication.$valid;
+            && form.publication.$valid
+            && form.description.$valid;
     };
 
     $scope.getResult = function (input) {

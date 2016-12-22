@@ -1,32 +1,44 @@
 <div class="row">
 
-    <div class="col-sm-offset-5 col-sm-2">
-        <img ng-src="{{book.image}}" class="img-rounded img-responsive">
-    </div>
-
-    <div class="col-sm-offset-2 col-sm-8">
+    <div class="col-sm-offset-1 col-sm-10">
 
         <h3 class="library-collection">{{book.title}} <small>{{book.author}}</small></h3>
+
+        <hr>
+
+    </div>
+
+    <div class="col-sm-offset-5 col-sm-2">
+
+        <img ng-src="{{book.image}}" class="img-rounded img-responsive library-image-product">
+
+    </div>
+
+    <div class="col-sm-offset-1 col-sm-10">
+
+        <!--<h3 class="library-collection">{{book.title}} <small>{{book.author}}</small></h3>-->
 
         <ul class="list-group">
             <li ng-if="hasDescription()" class="list-group-item library-collection">
                 <em>{{book.description}}</em>
             </li>
+            <li class="list-group-item library-collection">
+                The book volume is <ins>{{book.size}}</ins> pages.
+                It was published in <ins>{{book.date}}</ins> firstly.
+                <span ng-if="hasReviews()">
+                    Average score is <code>{{ getAverageScore() | number: 1 }}</code> stars.</span>
+            </li>
             <li ng-if="hasReviews()" class="list-group-item">
-                <blockquote ng-repeat="rev in book.reviews" class="blockquote-reverse">
-                    <span>"{{rev.content}}"</span>
-                    <footer>
+                <p ng-repeat="rev in book.reviews" class="blockquote-reverse">
+                    <em>
+                        &laquo;{{rev.content}}&raquo;
+                    </em><br>
+                    <small>
                         <code>{{rev.score}}*</code>
                         by <ins>{{rev.nickname}}</ins>,
                         {{ formatDate(rev.date) | date: 'HH:mm, MMMM d, y' }}
-                    </footer>
-                </blockquote>
-            </li>
-            <li class="list-group-item library-collection">
-                The book volume is <ins>{{book.size}}</ins> pages.<br>
-                It was published in <ins>{{book.date}}</ins> firstly.
-                <span ng-if="hasReviews()">
-                    <br>Average score is <code>{{ getAverageScore() | number: 1 }}</code> stars.</span>
+                    </small><br>
+                </p>
             </li>
         </ul>
 

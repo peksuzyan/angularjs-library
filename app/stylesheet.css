@@ -19,3 +19,7 @@ tr, th, fieldset {
 .visible-lg {
     height: 30px;
 }
+
+.library-image-product {
+    margin-bottom: 10px;
+}

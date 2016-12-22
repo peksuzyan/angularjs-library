@@ -1,7 +1,15 @@
 <div class="row">
-    <div class="col-sm-8">
+
+    <div class="col-sm-offset-1 col-sm-10">
+
         <h3 class="library-collection">Library Collection</h3>
+
         <hr>
+
+    </div>
+
+    <div class="col-sm-offset-1 col-sm-7">
+
         <table class="table table-hover">
             <thead>
             <tr>
@@ -30,7 +38,7 @@
             <tr ng-repeat="book in showBooks() | orderBy: sortProperty: sortReverse"
                 ng-mouseover="showImage(book.image)" ng-class="getBySize(book.size)">
                 <td>{{$index + 1}}</td>
-                <td>"{{book.title}}"</td>
+                <td>&laquo;{{book.title}}&raquo;</td>
                 <td ng-click="go('/show/' + book.id)">
                     <img ng-src="{{book.image}}" alt="{{book.title}}"
                          class="library-image-tiny"/></td>
@@ -42,18 +50,35 @@
             </tbody>
         </table>
 
-        <a ng-href="#/add" class="btn btn-success btn-block" role="button">Add new book</a>
+        <div class="row">
 
-        <h4 class="library-collection">Have been already read <small>by yourself</small></h4>
+            <div class="col-sm-6">
 
-        <fieldset>
-            <em ng-repeat="book in showBooks()">
-                <span ng-if="book.isRead">"{{book.title}}" - {{book.author}} ({{book.date}})<br></span>
-            </em>
-        </fieldset>
+                <a ng-href="#/add" class="btn btn-success btn-block" role="button">Add new book</a>
+
+            </div>
+
+            <div class="col-sm-6">
+
+                <form>
+                    <button type="submit" class="btn btn-primary btn-block"
+                            ng-click="removeBooks()" ng-disabled="!readyToRemove()">Remove books</button>
+                </form>
+
+            </div>
+
+        </div>
+
+        <!--<h4 class="library-collection">Have been already read <small>by yourself</small></h4>-->
+
+        <!--<fieldset>-->
+            <!--<em ng-repeat="book in showBooks()">-->
+                <!--<span ng-if="book.isRead">&laquo;{{book.title}}&raquo; - {{book.author}} ({{book.date}})<br></span>-->
+            <!--</em>-->
+        <!--</fieldset>-->
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         <img ng-src="{{currentImage}}" class="img-thumbnail img-responsive">
     </div>
 

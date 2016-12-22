@@ -31,4 +31,12 @@ ctrlLayer.controller('storeCtrl', [
             $scope.currentImage = image;
         };
 
+        $scope.removeBooks = function () {
+            collection.removeAllSelected();
+        };
+
+        $scope.readyToRemove = function () {
+            return collection.hasSelected();
+        }
+
 }]);
