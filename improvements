@@ -1,2 +1,5 @@
 1. add field with url to picture
 2. add review block
+3. after click on button "add review" screen should scroll down
+4. "comment" field should be as textarea type
+5. assign id to newly added book

@@ -4,26 +4,83 @@
         <img ng-src="{{book.image}}" class="img-rounded img-responsive">
     </div>
 
-    <div class="col-sm-offset-3 col-sm-6">
+    <div class="col-sm-offset-2 col-sm-8">
 
-        <h3 class="library-collection">{{book.title}}</h3>
-        <h5 class="library-collection">{{book.author}}</h5>
+        <h3 class="library-collection">{{book.title}} <small>{{book.author}}</small></h3>
 
-        <hr>
-
-        <div class="list-group">
-            <a class="list-group-item">Count of pages: <mark>{{book.size}}</mark></a>
-            <a class="list-group-item">Publication date: <mark>{{book.date}}</mark></a>
-            <a class="list-group-item">{{book.description}}</a>
-            <a class="list-group-item">
-                <blockquote class="blockquote-reverse" ng-repeat="review in book.reviews">
-                    <p>"{{review.content}}"</p>
-                    <footer>{{review.nickname}}, {{review.date}}</footer>
+        <ul class="list-group">
+            <li ng-if="hasDescription()" class="list-group-item library-collection">
+                <em>{{book.description}}</em>
+            </li>
+            <li ng-if="hasReviews()" class="list-group-item">
+                <blockquote ng-repeat="rev in book.reviews" class="blockquote-reverse">
+                    <span>"{{rev.content}}"</span>
+                    <footer>
+                        <code>{{rev.score}}*</code>
+                        by <ins>{{rev.nickname}}</ins>,
+                        {{ formatDate(rev.date) | date: 'HH:mm, MMMM d, y' }}
+                    </footer>
                 </blockquote>
-            </a>
-        </div>
-
-        <a ng-href="#/" class="btn btn-success btn-block" role="button">Back to the Library</a>
+            </li>
+            <li class="list-group-item library-collection">
+                The book volume is <ins>{{book.size}}</ins> pages.<br>
+                It was published in <ins>{{book.date}}</ins> firstly.
+                <span ng-if="hasReviews()">
+                    <br>Average score is <code>{{ getAverageScore() | number: 1 }}</code> stars.</span>
+            </li>
+        </ul>
 
     </div>
+
+    <div class="col-sm-offset-2 col-sm-4">
+        <a ng-href="#/" class="btn btn-success btn-block" role="button">Back to the Library</a>
+    </div>
+
+    <div class="col-sm-4">
+        <a ng-click="openNewReview()" class="btn btn-success btn-block" role="button">Create new review</a>
+    </div>
+
+    <div ng-show="hasReview" class="col-sm-offset-2 col-sm-8">
+
+        <vertical-gap></vertical-gap>
+
+        <form name="review" class="form-horizontal" novalidate>
+
+            <div class="form-group has-feedback" ng-class="getResult(review.content).class">
+                <label class="col-sm-3 control-label">Comment:</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" ng-model="content" required
+                           name="content" placeholder="Please, type your review..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-group has-feedback" ng-class="getResult(review.nickname).class">
+                <label class="col-sm-3 control-label">By:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control"
+                           ng-model="nickname" required
+                           name="nickname" placeholder="Please, type your nickname...">
+                </div>
+            </div>
+
+            <div class="form-group has-feedback" ng-class="getResult(review.score).class">
+                <label class="col-sm-3 control-label">Score:</label>
+                <div class="col-sm-6">
+                    <select name="score" title="score" class="form-control" ng-model="score" required>
+                        <option ng-repeat="star in scores" ng-value="star" ng-selected="maxScore()">
+                            {{star}} star(s)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group col-sm-12">
+                <button type="submit" class="btn btn-primary btn-block"
+                        ng-disabled="!isValidForm(review)" ng-click="createReview()" >
+                    Publish</button>
+            </div>
+
+        </form>
+
+    </div>
+
 </div>
