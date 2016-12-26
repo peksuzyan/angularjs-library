@@ -25,12 +25,4 @@ modelLayer.service('backend', [
         }*/
     };
 
-    // this.getPicture = {
-    //     async: function () {
-    //         return $http.get("").then(function (response) {
-    //             return response.data;
-    //         });
-    //     }
-    // }
-
 }]);

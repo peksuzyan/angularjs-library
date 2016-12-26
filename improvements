@@ -3,3 +3,7 @@
 3. after click on button "add review" screen should scroll down
 4. "comment" field should be as textarea type
 5. assign id to newly added book
+5. add labels on page with details
+6. fill books by descriptions, reviews and so on
+7. add sort label on the head of column
+8. change color on the book record when book is selected as ready to remove

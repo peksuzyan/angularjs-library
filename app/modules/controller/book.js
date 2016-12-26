@@ -1,5 +1,6 @@
 ctrlLayer.controller('bookCtrl', [
-    '$scope', 'collection', 'validator', 'DEFAULT', function ($scope, collection, validator, DEFAULT) {
+    '$scope', '$location', 'collection', 'validator', 'PATH', 'DEFAULT',
+    function ($scope, $location, collection, validator, PATH, DEFAULT) {
 
     $scope.createBook = function () {
         collection.add({
@@ -15,6 +16,7 @@ ctrlLayer.controller('bookCtrl', [
         });
 
         $scope.clearForm();
+        $location.path(PATH.HOME);
     };
 
     $scope.loadedImage = DEFAULT.IMAGE;

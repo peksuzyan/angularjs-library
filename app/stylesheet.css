@@ -6,6 +6,18 @@ tr, th, fieldset {
     text-align: center;
 }
 
+table {
+    user-select: none;
+}
+
+a, a:hover {
+    color: black;
+}
+
+.library-select-pagination {
+    margin-top: 15px;
+}
+
 .library-image-tiny {
     width: 20px;
     height: 30px;

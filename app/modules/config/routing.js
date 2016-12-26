@@ -1,19 +1,19 @@
 configLayer
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, PATH) {
         $routeProvider
-            .when('/books', {
+            .when(PATH.HOME, {
                 templateUrl: 'books.html',
                 controller: 'storeCtrl'
             })
-            .when('/add', {
+            .when(PATH.BOOK_REGISTRATION, {
                 templateUrl: 'add.html',
                 controller: 'bookCtrl'
             })
-            .when('/show/:bookId', {
+            .when(PATH.BOOK_DETAILS, {
                 templateUrl: 'details.html',
                 controller: 'detailCtrl'
             })
             .otherwise({
-                redirectTo: '/books'
+                redirectTo: PATH.HOME
             })
     });

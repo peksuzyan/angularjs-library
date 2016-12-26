@@ -56,7 +56,7 @@
 
         <vertical-gap></vertical-gap>
 
-        <form name="review" class="form-horizontal" novalidate>
+        <form name="review" class="form-horizontal" id="review" novalidate>
 
             <div class="form-group has-feedback" ng-class="getResult(review.content).class">
                 <label class="col-sm-3 control-label">Comment:</label>
@@ -64,6 +64,8 @@
                     <textarea class="form-control" ng-model="content" required
                            name="content" placeholder="Please, type your review..."></textarea>
                 </div>
+                <label class="control-label" ng-show="getResult(review.content).error">
+                    {{getResult(review.content).message}}</label>
             </div>
 
             <div class="form-group has-feedback" ng-class="getResult(review.nickname).class">
@@ -73,6 +75,8 @@
                            ng-model="nickname" required
                            name="nickname" placeholder="Please, type your nickname...">
                 </div>
+                <label class="control-label" ng-show="getResult(review.nickname).error">
+                    {{getResult(review.nickname).message}}</label>
             </div>
 
             <div class="form-group has-feedback" ng-class="getResult(review.score).class">
@@ -83,6 +87,8 @@
                             {{star}} star(s)</option>
                     </select>
                 </div>
+                <label class="control-label" ng-show="getResult(review.score).error">
+                    {{getResult(review.score).message}}</label>
             </div>
 
             <div class="input-group col-sm-12">

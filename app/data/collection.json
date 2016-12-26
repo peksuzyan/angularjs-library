@@ -51,7 +51,7 @@
     "author": "Ivan Turgenev",
     "size": 201,
     "date": 1862,
-    "isRead": true,
+    "isRead": false,
     "image": "pictures/fathers_and_sons.jpg",
     "description": "Fathers and Sons did what many other Russian novels did: pit the younger generation against the old. When Bazarov, a strict nihilist, challenges the well-established mores of Provincial life, he lures the naive towards his radical ideas. But when his beliefs get challenged by the unexpected appearance of passionate love and spirituality, he suffers a crisis that will force him to rethink his entire worldview.",
     "reviews": []
@@ -92,7 +92,7 @@
   {
     "id": 8,
     "title": "The Brothers Karamazov",
-    "author": "Fyodor Dostoesvky",
+    "author": "Fyodor Dostoevsky",
     "size": 1087,
     "date": 1880,
     "isRead": false,

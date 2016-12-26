@@ -1,5 +1,6 @@
 ctrlLayer.controller('detailCtrl', [
-    '$scope', '$routeParams', 'validator', 'collection', function ($scope, $routeParams, validator, collection) {
+    '$scope', '$routeParams', 'validator', 'collection', '$location', '$anchorScroll',
+    function ($scope, $routeParams, validator, collection, $location, $anchorScroll) {
 
         $scope.book = collection.read($routeParams.bookId);
 

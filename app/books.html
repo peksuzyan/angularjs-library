@@ -13,30 +13,36 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>#</th>
                 <th>
-                    <span ng-click="orderBy('title')">Title</span>
+                    <a>#</a>
                 </th>
                 <th>
-                    <span>Icon</span>
+                    <a ng-click="orderBy('title')">Title</a>
+                    <span ng-bind-html="arrow('title')"></span>
                 </th>
                 <th>
-                    <span ng-click="orderBy('author')">Author</span>
+                    <a>Icon</a>
                 </th>
                 <th>
-                    <span ng-click="orderBy('date')">Published</span>
+                    <a ng-click="orderBy('author')">Author</a>
+                    <span ng-bind-html="arrow('author')"></span>
                 </th>
                 <th>
-                    <span ng-click="orderBy('size')">Size</span>
+                    <a ng-click="orderBy('date')">Published</a>
+                    <span ng-bind-html="arrow('date')"></span>
                 </th>
                 <th>
-                    <span></span>
+                    <a ng-click="orderBy('size')">Size</a>
+                    <span ng-bind-html="arrow('size')"></span>
+                </th>
+                <th>
+                    <a></a>
                 </th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="book in showBooks() | orderBy: sortProperty: sortReverse"
-                ng-mouseover="showImage(book.image)" ng-class="getBySize(book.size)">
+            <tr ng-repeat="book in showBooks() | orderBy: sortProperty: sortReverse | slice: from: to"
+                ng-mouseover="showImage(book.image)" ng-class="isRemovable(book.isRead)">
                 <td>{{$index + 1}}</td>
                 <td>&laquo;{{book.title}}&raquo;</td>
                 <td ng-click="go('/show/' + book.id)">
@@ -44,7 +50,7 @@
                          class="library-image-tiny"/></td>
                 <td>{{book.author}}</td>
                 <td><code>{{book.date}}</code></td>
-                <td>{{book.size}} p.</td>
+                <td>{{book.size}}</td>
                 <td ng-click=""><input type="checkbox" ng-model="book.isRead"/></td>
             </tr>
             </tbody>
@@ -69,17 +75,45 @@
 
         </div>
 
-        <!--<h4 class="library-collection">Have been already read <small>by yourself</small></h4>-->
+        <div class="row">
 
-        <!--<fieldset>-->
-            <!--<em ng-repeat="book in showBooks()">-->
-                <!--<span ng-if="book.isRead">&laquo;{{book.title}}&raquo; - {{book.author}} ({{book.date}})<br></span>-->
-            <!--</em>-->
-        <!--</fieldset>-->
+            <div class="col-sm-offset-1 col-sm-5">
+
+                <ul class="pagination">
+
+                    <li ng-repeat="r in getTotalRanges()" ng-class="getClassOfCurrentRange(r)">
+                        <a ng-click="setCurrentRange(r)">{{r}}</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-sm-6 form-group">
+
+                <form class="form-horizontal library-select-pagination">
+                    <div class="form-group">
+                        <label for="count" class="col-sm-6 control-label">Items on page:</label>
+                        <div class="col-sm-6 control-label">
+                            <select name="count" title="count" ng-model="count"
+                                    class="form-control" id="count" required>
+                                <option ng-repeat="item in items" ng-value="item"
+                                        ng-click="setCurrentRange(1)">{{item}} book(s)</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
     </div>
 
     <div class="col-sm-3">
         <img ng-src="{{currentImage}}" class="img-thumbnail img-responsive">
+
+
     </div>
 
 </div>
